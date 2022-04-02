@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "529515415922",
+    "project_id": "kicthen-2b10d",
+    "storage_bucket": "kicthen-2b10d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529515415922:android:aeb0acc896647406e1b5eb",
+        "android_client_info": {
+          "package_name": "com.example.kitchen_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529515415922-7posu37urv5tf0etguafjdmt0rtdk747.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABkgr-Hk7IJ5UIMIdQHK9mEJpzDE_V00w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529515415922-7posu37urv5tf0etguafjdmt0rtdk747.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529515415922:android:a469c4c8508ac5e2e1b5eb",
+        "android_client_info": {
+          "package_name": "com.example.kitchen_master"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529515415922-7posu37urv5tf0etguafjdmt0rtdk747.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABkgr-Hk7IJ5UIMIdQHK9mEJpzDE_V00w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529515415922-7posu37urv5tf0etguafjdmt0rtdk747.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
