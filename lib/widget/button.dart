@@ -25,11 +25,11 @@ class button extends StatelessWidget {
         onPressed: onPressed,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
-        padding: EdgeInsets.all(0.0),
+        padding: EdgeInsets.all(10.0),
         child: Ink(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+                colors: [Colors.amber],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),

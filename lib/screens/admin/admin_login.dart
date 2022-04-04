@@ -1,23 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kitchen_master/screens/user/user_login.dart';
+import 'package:kitchen_master/screens/admin/admin_home.dart';
+import 'package:kitchen_master/screens/admin/admin_sign.dart';
+import 'package:kitchen_master/screens/user/user_home.dart';
+import 'package:kitchen_master/screens/user/user_sign.dart';
 
 import '../../widget/button.dart';
 import '../../widget/textfield.dart';
 
-class User_Sign extends StatelessWidget {
-  const User_Sign({Key? key}) : super(key: key);
+class Admin_Log extends StatelessWidget {
+  const Admin_Log({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController email = TextEditingController();
-    TextEditingController name = TextEditingController();
-
     final _formKey = GlobalKey<FormState>();
     TextEditingController password = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign In"),
+        title: Text("LOGIN"),
       ),
       body: Form(
         key: _formKey,
@@ -25,17 +26,6 @@ class User_Sign extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Admin"),
-            textfeild(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'enter a valid eamil';
-                  } else if (!value.contains("@")) {
-                    return 'enter a valid eamil';
-                  }
-                  return null;
-                },
-                label: "Name",
-                controler: name),
             textfeild(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -60,21 +50,21 @@ class User_Sign extends StatelessWidget {
                 label: "Password",
                 controler: password),
             button(
-                onPressed: () async {
+                onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    FirebaseAuth auth = await FirebaseAuth.instance;
-                    await auth
-                        .createUserWithEmailAndPassword(
-                            email: email.text, password: password.text)
-                        .whenComplete(() => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => User_Log())));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Admin_Home()));
                   }
                 },
                 height: 40.0,
                 width: 150.0,
-                text: "Register")
+                text: "Login"),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Admin_Sign()));
+                },
+                child: Text("create new acoount"))
           ],
         ),
       ),

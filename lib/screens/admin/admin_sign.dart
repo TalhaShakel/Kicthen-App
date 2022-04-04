@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kitchen_master/screens/admin/admin_login.dart';
 import 'package:kitchen_master/screens/user/user_login.dart';
 
 import '../../widget/button.dart';
 import '../../widget/textfield.dart';
 
-class User_Sign extends StatelessWidget {
-  const User_Sign({Key? key}) : super(key: key);
+class Admin_Sign extends StatelessWidget {
+  const Admin_Sign({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +70,7 @@ class User_Sign extends StatelessWidget {
                         .whenComplete(() => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => User_Log())));
+                                builder: (context) => Admin_Log())));
                   }
                 },
                 height: 40.0,
