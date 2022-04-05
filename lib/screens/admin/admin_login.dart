@@ -69,12 +69,16 @@ class Admin_Log extends StatelessWidget {
                   label: "Password",
                   controler: password),
               button(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Admin_Home()));
+                      await FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                              email: email.text, password: password.text)
+                          .whenComplete(() => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Admin_Home()))
+                              .whenComplete(() => print("Admin is login")));
                     }
                   },
                   height: 40.0,

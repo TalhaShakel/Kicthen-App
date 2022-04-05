@@ -67,10 +67,16 @@ class User_Log extends StatelessWidget {
                 controler: password,
               ),
               button(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => User_Home()));
+                      await FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                              email: email.text, password: password.text)
+                          .whenComplete(() => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => User_Home())))
+                          .whenComplete(() => print("user is login"));
                     }
                   },
                   height: 40.0,
@@ -78,14 +84,8 @@ class User_Log extends StatelessWidget {
                   text: "Login"),
               TextButton(
                   onPressed: () {
-                    FirebaseAuth.instance
-                        .signInWithEmailAndPassword(
-                            email: email.text, password: password.text)
-                        .whenComplete(() => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => User_Sign())))
-                        .whenComplete(() => print("user is login"));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => User_Sign()));
                   },
                   child: Text("create new acoount"))
             ],

@@ -34,7 +34,7 @@ class User_Sign extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Admin",
+                "User",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -92,7 +92,8 @@ class User_Sign extends StatelessWidget {
                           .whenComplete(() => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => User_Log())));
+                                  builder: (context) => User_Log())))
+                          .whenComplete(() => print("User is Register"));
                     }
                   },
                   height: 40.0,

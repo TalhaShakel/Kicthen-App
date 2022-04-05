@@ -92,7 +92,7 @@ class Admin_Sign extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Admin_Log())))
-                          .whenComplete(() => print("User is register"));
+                          .whenComplete(() => print("admin is register"));
                     }
                   },
                   height: 40.0,
