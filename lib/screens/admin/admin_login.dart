@@ -13,59 +13,81 @@ class Admin_Log extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     TextEditingController email = TextEditingController();
     final _formKey = GlobalKey<FormState>();
     TextEditingController password = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: Text("LOGIN"),
+        title: Text(
+          "LOGIN",
+        ),
       ),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Admin"),
-            textfeild(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'enter a valid eamil';
-                  } else if (!value.contains("@")) {
-                    return 'enter a valid eamil';
-                  }
-                  return null;
-                },
-                label: "Email",
-                controler: email),
-            textfeild(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Please Enter Password";
-                  } else if (value.length < 6) {
-                    return "Password must be atleast 6 characters long";
-                  } else {
+      body: Padding(
+        padding: EdgeInsets.only(left: size.height * 0.1 / 2),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Admin",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red.shade900),
+              ),
+              textfeild(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'enter a valid eamil';
+                    } else if (!value.contains("@")) {
+                      return 'enter a valid eamil';
+                    }
                     return null;
-                  }
-                },
-                label: "Password",
-                controler: password),
-            button(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+                  },
+                  hinttext: 'abc@gmail.com',
+                  icon: Icons.mail,
+                  onchanged: (String value) {},
+                  label: "Email",
+                  controler: email),
+              textfeild(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please Enter Password";
+                    } else if (value.length < 6) {
+                      return "Password must be atleast 6 characters long";
+                    } else {
+                      return null;
+                    }
+                  },
+                  hinttext: '123456',
+                  icon: Icons.password,
+                  onchanged: (String value) {},
+                  label: "Password",
+                  controler: password),
+              button(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Admin_Home()));
+                    }
+                  },
+                  height: 40.0,
+                  width: 150.0,
+                  text: "Login"),
+              TextButton(
+                  onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Admin_Home()));
-                  }
-                },
-                height: 40.0,
-                width: 150.0,
-                text: "Login"),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Admin_Sign()));
-                },
-                child: Text("create new acoount"))
-          ],
+                        MaterialPageRoute(builder: (context) => Admin_Sign()));
+                  },
+                  child: Text("create new acoount"))
+            ],
+          ),
         ),
       ),
     );

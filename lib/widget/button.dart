@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kitchen_master/widget/constants.dart';
 
 class button extends StatelessWidget {
   String text;
@@ -19,29 +20,22 @@ class button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Container(
-      height: height,
-      child: RaisedButton(
-        onPressed: onPressed,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
-        padding: EdgeInsets.all(10.0),
-        child: Ink(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.amber],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-              ),
-              borderRadius: BorderRadius.circular(30.0)),
-          child: Container(
-            constraints: BoxConstraints(maxWidth: width, minHeight: 50.0),
-            alignment: Alignment.center,
-            child: Text(
-              text,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
-            ),
+      margin: EdgeInsets.symmetric(vertical: 10),
+      width: size.width * 0.4,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(29),
+        child: FlatButton(
+          color: kPrimaryColor,
+          // ignore: prefer_const_constructors
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+          onPressed: onPressed,
+          child: Text(
+            text,
+            // ignore: prefer_const_constructors
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),

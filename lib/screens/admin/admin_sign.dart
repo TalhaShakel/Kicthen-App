@@ -13,31 +13,44 @@ class Admin_Sign extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController email = TextEditingController();
     TextEditingController name = TextEditingController();
+    Size size = MediaQuery.of(context).size;
 
     final _formKey = GlobalKey<FormState>();
     TextEditingController password = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign In"),
+        title: Text(
+          "Sign In",
+        ),
       ),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Admin"),
-            textfeild(
+      body: Padding(
+        padding: EdgeInsets.only(left: size.height * 0.1 / 2),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Admin",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red.shade900),
+              ),
+              textfeild(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'enter a valid eamil';
-                  } else if (!value.contains("@")) {
-                    return 'enter a valid eamil';
+                    return 'enter a valid Name';
                   }
                   return null;
                 },
                 label: "Name",
-                controler: name),
-            textfeild(
+                controler: name,
+                hinttext: 'Your Name',
+                icon: Icons.person,
+                onchanged: (String value) {},
+              ),
+              textfeild(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'enter a valid eamil';
@@ -47,8 +60,12 @@ class Admin_Sign extends StatelessWidget {
                   return null;
                 },
                 label: "Email",
-                controler: email),
-            textfeild(
+                controler: email,
+                hinttext: 'abc@gmail.com',
+                icon: Icons.mail,
+                onchanged: (String value) {},
+              ),
+              textfeild(
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Please Enter Password";
@@ -59,24 +76,30 @@ class Admin_Sign extends StatelessWidget {
                   }
                 },
                 label: "Password",
-                controler: password),
-            button(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    FirebaseAuth auth = await FirebaseAuth.instance;
-                    await auth
-                        .createUserWithEmailAndPassword(
-                            email: email.text, password: password.text)
-                        .whenComplete(() => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Admin_Log())));
-                  }
-                },
-                height: 40.0,
-                width: 150.0,
-                text: "Register")
-          ],
+                controler: password,
+                hinttext: '123456',
+                icon: Icons.password,
+                onchanged: (String value) {},
+              ),
+              button(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      FirebaseAuth auth = await FirebaseAuth.instance;
+                      await auth
+                          .createUserWithEmailAndPassword(
+                              email: email.text, password: password.text)
+                          .whenComplete(() => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Admin_Log())))
+                          .whenComplete(() => print("User is register"));
+                    }
+                  },
+                  height: 40.0,
+                  width: 150.0,
+                  text: "Register")
+            ],
+          ),
         ),
       ),
     );
